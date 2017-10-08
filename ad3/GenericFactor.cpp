@@ -20,7 +20,7 @@
 #include "Utils.h"
 #define EIGEN
 #ifdef EIGEN
-#include <../Eigen/Eigenvalues>
+#include <Eigen/Eigenvalues>
 #else
 #include "lapacke/lapacke.h"
 #endif

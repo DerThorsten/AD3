@@ -1,4 +1,8 @@
 cmake_minimum_required(VERSION 2.8)
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
+
+find_package(Eigen3 REQUIRED)
+
 
 set(AD3_SRC_FILES
   ad3/FactorGraph.cpp
@@ -20,7 +24,7 @@ endif()
 
 
 include_directories( ad3 )
-#include_directories( Eigen )
+include_directories( ${EIGEN3_INCLUDE_DIR} )
 
 
 
