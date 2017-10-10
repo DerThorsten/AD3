@@ -1,0 +1,13 @@
+# AD3 cmake module
+# This module sets the following variables in your project::
+#
+#   AD3_FOUND - true if AD3 found on the system
+#   AD3_INCLUDE_DIRS - the directory containing AD3 headers
+#   AD3_LIBRARY - the ad3 library
+
+@PACKAGE_INIT@
+
+set(PN AD3)
+set_and_check(${PN}_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@")
+set_and_check(${PN}_LIBRARY      "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@"/ad3)
+check_required_components(${PN})
