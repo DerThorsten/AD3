@@ -7,7 +7,18 @@
 
 @PACKAGE_INIT@
 
+
+
+
+
 set(PN AD3)
+
+FIND_LIBRARY(${PN}_LIBRARY ad3
+    PATHS ${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@
+    NO_DEFAULT_PATH
+)
+
+
 set_and_check(${PN}_INCLUDE_DIRS "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_INCLUDEDIR@")
-set_and_check(${PN}_LIBRARY      "${PACKAGE_PREFIX_DIR}/@CMAKE_INSTALL_LIBDIR@"/ad3)
+set_and_check(${PN}_LIBRARY      ${${PN}_LIBRARY})
 check_required_components(${PN})

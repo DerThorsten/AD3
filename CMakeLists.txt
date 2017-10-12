@@ -12,7 +12,7 @@ ENDIF()
 
 set(${PROJECT_NAME}_VERSION_MAJOR 2)
 set(${PROJECT_NAME}_VERSION_MINOR 5)
-set(${PROJECT_NAME}_VERSION_PATCH 1)
+set(${PROJECT_NAME}_VERSION_PATCH 3)
 
 
 set(${PROJECT_NAME}_VERSION 
@@ -27,6 +27,11 @@ set(AD3_SRC_FILES
   ad3/Factor.cpp
   ad3/Utils.cpp
 )
+
+file(GLOB_RECURSE AD3_PUBLIC_HEADER
+    "ad3/*.h"
+)
+
 
 option(REMOVE_SOME_WARNINGS "Remove some annoying warnings from eigen" ON)
 
@@ -47,6 +52,9 @@ include_directories( ${EIGEN3_INCLUDE_DIR} )
 
 ADD_LIBRARY(ad3 SHARED ${AD3_SRC_FILES})
 
+# set_target_properties(ad3 PROPERTIES
+#   PUBLIC_HEADER "${AD3_PUBLIC_HEADER}")
+
 
 #------------------------------------------------------------------------------------------------------------------
 # install
@@ -55,6 +63,7 @@ include(GNUInstallDirs)
 include(CMakePackageConfigHelpers)
 
 install(TARGETS ad3 
+    EXPORT EXPORTED_AD3_TARGETS
     DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 
